@@ -12,6 +12,33 @@ function generateToken(id) {
 }
 
 module.exports = {
+
+    async Authenticate(req, res) {
+		const email = req.body.email;
+		const password = req.body.password;
+		if (!email || !password)
+			return res.status(400).json({ msg: "Campos obrigatórios vazios!" });
+		try {
+			const user = await User.findOne({
+				where: { email },
+			});
+			if (!user) {
+                return res.status(404).json({ msg: "E-mail ou senha inválidos." });	
+            } else {
+				if (bcrypt.compareSync(password, user.password)) {
+					const token = generateToken(user.id);
+					return res
+						.status(200)
+						.json({ msg: "Autenticação realizada com sucesso!", token });
+				} else {
+                    return res.status(404).json({ msg: "E-mail ou senha inválidos." });
+                }
+			}
+		} catch (error) {
+			res.status(500).json(error);
+		}
+	},
+
     async CreateUser(req, res) {
         try {
             const { email, password } = req.body;
@@ -28,12 +55,10 @@ module.exports = {
                     const salt = bcrypt.genSaltSync(12);
                     const hash = bcrypt.hashSync(password, salt);
                     const user = await User.create({
-                        companyName,
-                        cnpj,
+                        email,
                         password: hash,
-                        address
                     }).catch((error) => {
-                        res.status(500).json({ msg: "Não foi possível cadastrar no sistema - " + error });
+                        res.status(500).json({ msg: "Não foi possivel cadastrar um novo usuário - Erro: " + error });
                     });
                     if (user)
                         res.status(201).json({ msg: "Usuário cadastrado com sucesso." });
@@ -42,7 +67,7 @@ module.exports = {
                 }
             }
         } catch (error) {
-            res.status(500).json({ msg: "Não foi possivel cadastrar um novo associado - Erro: " + error })
+            res.status(500).json({ msg: "Não foi possivel cadastrar um novo usuário - Erro: " + error })
         }
     },
 }
