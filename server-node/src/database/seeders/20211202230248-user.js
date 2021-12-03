@@ -18,7 +18,7 @@ module.exports = {
             password: "$2a$12$5l.OU6X2DdHCjNdhJz4fIehb7s2QNkvuQtBZIMrFfwLSm4BeFXsJS",
           }
       ], {}
-  );
+    );
   },
 
   down: async (queryInterface, Sequelize) => {
