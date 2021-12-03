@@ -1,8 +1,8 @@
 # tads-mobile-project
 
-# Membros da equipe: 
-## Nícolas Teixeira Guerra Garcia - GRR20193920
-## José Adilson de Paula Cardoso - GRR20193771
+## Membros da equipe: 
+### Nícolas Teixeira Guerra Garcia - GRR20193920
+### José Adilson de Paula Cardoso - GRR20193771
 
 Enunciado:
 Especificação do Trabalho Prático
