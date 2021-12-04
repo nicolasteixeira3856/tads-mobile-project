@@ -17,6 +17,10 @@ class Estate extends Sequelize.Model {
             modelName: 'Estate',
         });
     }
+
+    static associate(models) {
+        this.hasMany(models.Favorite, { foreignKey: "estateId"})
+    }
 }
 
 module.exports = Estate;
