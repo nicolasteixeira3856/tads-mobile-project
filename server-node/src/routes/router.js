@@ -1,6 +1,7 @@
 const express = require("express");
 const userRouter = require("./userRouter");
 const estateRouter = require("./estateRouter");
+const favoriteRouter = require("./favoriteRouter");
 const router = express.Router();
 
 router.get("/", (req, res) => {
@@ -9,5 +10,6 @@ router.get("/", (req, res) => {
 
 router.use("/users", userRouter);
 router.use("/estates", estateRouter);
+router.use("/favorites", favoriteRouter);
 
 module.exports = router;

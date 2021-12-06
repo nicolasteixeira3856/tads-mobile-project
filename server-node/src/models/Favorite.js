@@ -7,6 +7,7 @@ class Favorite extends Sequelize.Model {
           estateId: Sequelize.INTEGER,
         }, {
             sequelize,
+            modelName: 'Favorite',
         });
     }
 
