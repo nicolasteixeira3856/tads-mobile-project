@@ -5,6 +5,7 @@ const User = require("../models/User");
 module.exports = {
     async listAllEstates(req, res) {
         const id = req.body.id;
+        console.log(id);
         if (!id)
 			return res.status(400).json({ msg: "Campos obrigatórios vazios!" });
 		try {
@@ -21,32 +22,32 @@ module.exports = {
                         model: Estate
                     }],
                 })
-			
-        const estate = await Estate.findAll({
-            order: [
-                ["price", "DESC"]
-            ],
-        })
+                    
+                const estate = await Estate.findAll({
+                    order: [
+                        ["price", "DESC"]
+                    ],
+                })
 
-        Object.entries(estate).forEach(([est,estVal]) => {
-            Object.entries(favorites).forEach(([fav, favVal]) => {
-                if(estVal.id == favVal.estateId) {
-                    estVal.isFavorited = true;
-                    console.log(estVal);
+                Object.entries(estate).forEach(([est,estVal]) => {
+                    Object.entries(favorites).forEach(([fav, favVal]) => {
+                        if(estVal.id == favVal.estateId) {
+                            estVal.isFavorited = true;
+                            console.log(estVal);
+                        }
+                    })
+                } )
+
+                if (estate) {
+                    res.status(200).json({ estate });
+                } else {
+                    res.status(404).json({ msg: "Não foi possível encontrar imóveis." });
                 }
-            })
-        } )
-
-        if (estate) {
-            res.status(200).json({ estate });
-        } else {
-            res.status(404).json({ msg: "Não foi possível encontrar imóveis." });
+            }
+        } catch (error) {
+            res.status(500).json({ msg: "Erro de conexão com o servidor!" });
+            console.log(error);
         }
-    }
-    } catch (error) {
-        res.status(500).json({ msg: "Erro de conexão com o servidor!" });
-        console.log(error);
-    }
     },
 
     async findStateById(req, res) {
