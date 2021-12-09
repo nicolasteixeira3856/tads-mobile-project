@@ -12,7 +12,8 @@ module.exports = {
             price: 400000,
             city: "Curitiba",
             neighborhood: "Bairro Alto",
-            phone: "(41) 3093-1212"
+            phone: "(41) 3093-1212",
+            isFavorited: false
           },
           {
             title: "Sobrado a venda no bairro Boa Vista",
@@ -23,7 +24,8 @@ module.exports = {
             price: 649000,
             city: "Curitiba",
             neighborhood: "Boa Vista",
-            phone: "(41) 3209-0909"
+            phone: "(41) 3209-0909",
+            isFavorited: false
           },
           {
             title: "Apartamento Garden",
@@ -34,7 +36,8 @@ module.exports = {
             price: 820000,
             city: "Curitiba",
             neighborhood: "Campina da Siqueira",
-            phone: "(41) 3093-1214"
+            phone: "(41) 3093-1214",
+            isFavorited: false
           }
       ], {}
     );
