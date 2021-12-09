@@ -11,7 +11,8 @@ class Estate extends Sequelize.Model {
           price: Sequelize.FLOAT,
           city: Sequelize.STRING,
           neighborhood: Sequelize.STRING,
-          phone: Sequelize.STRING
+          phone: Sequelize.STRING,
+          isFavorited: Sequelize.BOOLEAN
         }, {
             sequelize,
             modelName: 'Estate',
