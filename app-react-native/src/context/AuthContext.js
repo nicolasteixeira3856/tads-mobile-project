@@ -45,7 +45,7 @@ const AuthProvider = ({children}) => {
     const x_access_token = await AsyncStorage.getItem('x_access_token');
     if(x_access_token){
       dispatch({type: 'signIn', payload: x_access_token});
-      Navigator.navigate('Home');
+      Navigator.navigate('HomeStack');
     } else {
       dispatch({type:'signOut'});
       Navigator.navigate('Login');
@@ -60,7 +60,7 @@ const AuthProvider = ({children}) => {
       });
       await AsyncStorage.setItem('x_access_token', response.data.token);
       dispatch({ type: "signIn", payload: response.data.token });
-      Navigator.navigate("Home");
+      Navigator.navigate("HomeStack");
     } catch (err) {
       dispatch({
         type: "message",
