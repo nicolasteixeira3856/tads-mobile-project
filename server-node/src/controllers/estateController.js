@@ -5,7 +5,6 @@ const User = require("../models/User");
 module.exports = {
     async listAllEstates(req, res) {
         const id = req.body.id;
-        console.log(id);
         if (!id)
 			return res.status(400).json({ msg: "Campos obrigatórios vazios!" });
 		try {
