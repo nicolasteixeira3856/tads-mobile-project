@@ -11,7 +11,8 @@ function authReducer(state, action) {
       return {
         ...state,
         signedIn: true,
-        x_access_token: action.payload,
+        x_access_token: action.payload.token,
+        userId: action.payload.user.id
       };
     case "message":
       return {
@@ -23,6 +24,7 @@ function authReducer(state, action) {
         ...state,
         signedIn: false,
         x_access_token: null,
+        userId: null,
       };
     default:
       return { ...state };
@@ -33,23 +35,13 @@ const AuthProvider = ({children}) => {
   const [authState, dispatch] = useReducer(authReducer, {
     signedIn: false,
     x_access_token: null,
+    userId: null,
     message: "",
   });
 
   const signOut = async () => {
     dispatch({type:'signOut'});
     Navigator.navigate('Login');
-  }
-
-  const tryLocalSignIn = async () => {
-    const x_access_token = await AsyncStorage.getItem('x_access_token');
-    if(x_access_token){
-      dispatch({type: 'signIn', payload: x_access_token});
-      Navigator.navigate('HomeStack');
-    } else {
-      dispatch({type:'signOut'});
-      Navigator.navigate('Login');
-    }
   }
 
   const signIn = async ({ email, password }) => {
@@ -59,7 +51,7 @@ const AuthProvider = ({children}) => {
         password
       });
       await AsyncStorage.setItem('x_access_token', response.data.token);
-      dispatch({ type: "signIn", payload: response.data.token });
+      dispatch({ type: "signIn", payload: response.data });
       Navigator.navigate("HomeStack");
     } catch (err) {
       dispatch({
@@ -93,7 +85,6 @@ const AuthProvider = ({children}) => {
         authState,
         signIn,
         signUp,
-        tryLocalSignIn,
         signOut
       }}
     >

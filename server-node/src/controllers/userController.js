@@ -29,7 +29,7 @@ module.exports = {
 					const token = generateToken(user.id);
 					return res
 						.status(200)
-						.json({ msg: "Autenticação realizada com sucesso!", token });
+						.json({ msg: "Autenticação realizada com sucesso!", token, user });
 				} else {
                     return res.status(404).json({ msg: "E-mail ou senha inválidos." });
                 }

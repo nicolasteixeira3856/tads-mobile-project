@@ -3,7 +3,7 @@ const estatesRouter = express.Router();
 const estateController = require("../controllers/estateController");
 const auth = require("../middlewares/auth");
 
-estatesRouter.get("/listAllEstates", auth, estateController.listAllEstates);
+estatesRouter.post("/listAllEstates", auth, estateController.listAllEstates);
 estatesRouter.post("/findStateById", auth, estateController.findStateById);
 
 module.exports = estatesRouter;

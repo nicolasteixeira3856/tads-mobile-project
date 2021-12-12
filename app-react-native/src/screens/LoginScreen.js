@@ -8,11 +8,7 @@ const LoginScreen = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [switchValue, setSwitchValue] = useState(false);
   const toggleSwitch = () => setSwitchValue(previousState => !previousState);
-  const { authState, signIn, signUp, tryLocalSignIn } = useContext(AuthContext);
-
-  /*useEffect(() => {
-    tryLocalSignIn();
-  }, []);*/
+  const { authState, signIn, signUp } = useContext(AuthContext);
 
   return (
     <View style={{ justifyContent: "center", flex: 1, alignItems: "center", padding: 16 }}>
