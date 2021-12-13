@@ -3,7 +3,6 @@
 ## Membros da equipe: 
 ### Nícolas Teixeira Guerra Garcia - GRR20193920
 ### José Adilson de Paula Cardoso - GRR20193771
-### Eduardo Moro - GRR20193869
 
 Enunciado:
 Especificação do Trabalho Prático
