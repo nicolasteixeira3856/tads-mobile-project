@@ -10,7 +10,7 @@ const Estate = (props) => (
     <View style={styles.noteWrap}>
         <Image
             style={styles.image}
-            source={{ uri: 'https://f8b0-2804-1b3-6002-c794-4d83-7237-f9de-8c2c.ngrok.io/public/' + props.imgUrl}}
+            source={{ uri: 'https://785a-2804-1b3-6002-c794-c85a-c145-1d3d-45b6.ngrok.io/public/' + props.imgUrl}}
         />
         <View style={{ width: 6 }}/>
         <Text style={styles.text}>{props.title}{"\n"}{formatCurrency(props.price)}</Text>
@@ -20,7 +20,7 @@ const Estate = (props) => (
             type='material-community'
             color={props.isFavorited ? 'red' : 'red'}
             reverseColor={props.isFavorited ? 'grey' : 'red'}
-            onPress={() => console.log('hello')} 
+            onPress={props.isFavorited ? props.unfavorite : props.favorite} 
         />
     </View>
 ) 

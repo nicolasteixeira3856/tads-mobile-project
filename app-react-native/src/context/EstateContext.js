@@ -11,6 +11,13 @@ function estateReducer(state, action) {
         ...state,
         estates: action.payload
       };
+    case "setFavorite":
+      return {
+        ...state,
+        estates: state.estates.map(estate => 
+          estate.id === action.payload ? { ...estate, isFavorited: !estate.isFavorited } : estate
+        ) 
+      };
     case "message":
       return {
         ...state,
@@ -42,11 +49,23 @@ const EstateProvider = ({children}) => {
     }
   };
 
+  const setFavorite = async({estateId}) => {
+    try {
+      dispatch({ type: "setFavorite", payload: estateId });
+    } catch (err) {
+      dispatch({
+        type: "message",
+        payload: "Não foi possível recuperar os imóveis!",
+      });
+    }
+  };
+
   return (
     <EstateContext.Provider
       value={{
         estateState,
-        listAllEstates
+        listAllEstates,
+        setFavorite
       }}
     >
       {children}
