@@ -21,6 +21,10 @@ module.exports = {
                         model: Estate
                     }]
                 })
+                Object.entries(favorites).forEach(([fav, favVal]) => {  
+                    favVal.Estate.isFavorited = true;
+                });
+
                 if (favorites.length == 0) {
                     return res.status(404).json({msg: "O usuário não favoritou nenhum imóvel"});
                 }

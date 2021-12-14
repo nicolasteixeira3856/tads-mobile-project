@@ -9,6 +9,7 @@ import { FavoriteProvider } from "./src/context/FavoriteContext";
 import LoginScreen from "./src/screens/LoginScreen";
 import HomeScreen from "./src/screens/HomeScreen";
 import FavoritesScreen from "./src/screens/FavoritesScreen";
+import EstateDetailsScreen from "./src/screens/EstateDetailsScreen";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -48,6 +49,7 @@ export default function App() {
                   component={CustomDrawer}
                   options={{ headerShown: false }}
                 />
+                <Stack.Screen name="EstateDetailsScreen" component={EstateDetailsScreen}/>
               </Stack.Navigator>
           </NavigationContainer>
         </EstateProvider>

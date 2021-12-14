@@ -11,7 +11,7 @@ function estateReducer(state, action) {
         ...state,
         estates: action.payload
       };
-    case "setFavorite":
+    case "setFavoriteEstatesList":
       return {
         ...state,
         estates: state.estates.map(estate => 
@@ -49,9 +49,9 @@ const EstateProvider = ({children}) => {
     }
   };
 
-  const setFavorite = async({estateId}) => {
+  const setFavoriteEstatesList = async({estateId}) => {
     try {
-      dispatch({ type: "setFavorite", payload: estateId });
+      dispatch({ type: "setFavoriteEstatesList", payload: estateId });
     } catch (err) {
       dispatch({
         type: "message",
@@ -65,7 +65,7 @@ const EstateProvider = ({children}) => {
       value={{
         estateState,
         listAllEstates,
-        setFavorite
+        setFavoriteEstatesList
       }}
     >
       {children}

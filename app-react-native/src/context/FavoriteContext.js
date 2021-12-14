@@ -5,7 +5,19 @@ const FavoriteContext = createContext(null);
 
 function favoriteReducer(state, action) {
   switch (action.type) {
+    case "listAllFavoritedEstatesByUserId":
+      return {
+        ...state,
+        favoritedEstates: action.payload
+      };
+    case "removeEstateOnUnfavorite":
+      return { ...state, favoritedEstates: state.favoritedEstates.filter(favoritedEstate => favoritedEstate.Estate.id !== action.payload)};
     case "message":
+      return {
+        ...state,
+        message: action.payload,
+      };
+    case "messageFavoritesScreen":
       return {
         ...state,
         message: action.payload,
@@ -18,7 +30,9 @@ function favoriteReducer(state, action) {
 const FavoriteProvider = ({children}) => {
 
   const [favoriteState, dispatch] = useReducer(favoriteReducer, {
-    message: ""
+    message: "",
+    messageFavoritesScreen: "",
+    favoritedEstates: []
   });
 
   const favorite = async({userId, estateId}) => {
@@ -41,7 +55,29 @@ const FavoriteProvider = ({children}) => {
       const response = await api.delete(`/favorites/deleteFavorite/${userId}/${estateId}`, {});
       dispatch({ type: "message", payload: response.data.msg });
     } catch (err) {
-      dispatch({type: "message", payload: "Não foi possível favoritar o imóvel!",});
+      dispatch({type: "message", payload: "Não foi remover o imóvel dos favoritos!",});
+    }
+  };
+
+  const removeEstateOnUnfavorite = async({estateId}) => {
+    try {
+      dispatch({ type: "removeEstateOnUnfavorite", payload: estateId });
+    } catch (err) {
+      dispatch({type: "messageFavoritesScreen", payload: "Não foi remover o imóvel dos favoritos!",});
+    }
+  };
+
+  const listAllFavoritedEstatesByUserId = async({id}) => {
+    try {
+      const response = await api.post('/favorites/listAllFavoritedEstatesByUserId', {
+        id,
+      });
+      dispatch({ type: "listAllFavoritedEstatesByUserId", payload: response.data.favorites });
+    } catch (err) {
+      dispatch({
+        type: "messageFavoritesScreen",
+        payload: "Nenhum imóvel foi favoritado! ",
+      });
     }
   };
 
@@ -50,7 +86,9 @@ const FavoriteProvider = ({children}) => {
       value={{
         favoriteState,
         favorite,
-        unfavorite
+        unfavorite,
+        listAllFavoritedEstatesByUserId,
+        removeEstateOnUnfavorite
       }}
     >
       {children}
