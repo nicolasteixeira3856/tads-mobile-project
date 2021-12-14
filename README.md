@@ -5,17 +5,17 @@
 ### José Adilson de Paula Cardoso - GRR20193771
 
 ## Inicializar o projeto
-cd server-node
-npm install
-npx sequelize db:create
-npx sequelize db:migrate
-npx sequelize db:seed:all 
-npm start
-run with ngrok: ngrok http 3333
+- cd server-node
+- npm install
+- npx sequelize db:create
+- npx sequelize db:migrate
+- npx sequelize db:seed:all 
+- npm start
+- run with ngrok: ngrok http 3333
 #### Em outro terminal na raiz do projeto:
-cd app-react-native
-npm install
-npm start
+- cd app-react-native
+- npm install
+- npm start
 
 
 Enunciado:
