@@ -4,6 +4,7 @@ import { View } from "react-native";
 
 const EstateDetailsScreen = ({ navigation }) => {
 
+  
   return (
     <View style={{padding: 16 }}>
         <Text>

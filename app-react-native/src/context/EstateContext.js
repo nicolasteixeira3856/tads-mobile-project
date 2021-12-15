@@ -42,6 +42,7 @@ const EstateProvider = ({children}) => {
       });
       dispatch({ type: "listAllEstates", payload: response.data.estate });
     } catch (err) {
+      console.log(err);
       dispatch({
         type: "message",
         payload: "Não foi possível recuperar os imóveis!",

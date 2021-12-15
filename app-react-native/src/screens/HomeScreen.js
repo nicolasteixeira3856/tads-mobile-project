@@ -41,6 +41,10 @@ const HomeScreen = ({ navigation }) => {
         <Text>
           {estateState.message}
         </Text>
+        <Text>
+          token:
+          {authState.x_access_token}
+        </Text>
         <ScrollView>
           <View>
             {estateState.estates.map((estate) => (
