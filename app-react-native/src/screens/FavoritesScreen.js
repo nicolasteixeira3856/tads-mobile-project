@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Text } from "react-native-elements";
-import { View, ScrollView, Alert } from "react-native";
+import { View, ScrollView, Alert, TouchableOpacity } from "react-native";
 import { AuthContext } from "../context/AuthContext";
 import { FavoriteContext } from "../context/FavoriteContext";
 import Estate from '../components/Estate';
@@ -37,6 +37,7 @@ const FavoritesScreen = ({ navigation }) => {
         <ScrollView>
           <View>
             {favoriteState.favoritedEstates.map((favoritedEstate) => (
+              <TouchableOpacity key={favoritedEstate.Estate.id} onPress={() => navigation.navigate("EstateDetailsScreen", {estate:favoritedEstate.Estate})}>
               <Estate
                 key={favoritedEstate.Estate.id}
                 title={favoritedEstate.Estate.title}
@@ -46,6 +47,7 @@ const FavoritesScreen = ({ navigation }) => {
                 favorite={() => {}}
                 unfavorite={() => handleUnfavorite(authState.userId, favoritedEstate.Estate.id)}
               />
+              </TouchableOpacity>
             ))}
           </View>
         </ScrollView>

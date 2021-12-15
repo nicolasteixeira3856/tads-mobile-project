@@ -41,14 +41,10 @@ const HomeScreen = ({ navigation }) => {
         <Text>
           {estateState.message}
         </Text>
-        <Text>
-          token:
-          {authState.x_access_token}
-        </Text>
         <ScrollView>
           <View>
             {estateState.estates.map((estate) => (
-              <TouchableOpacity key={estate.id} onPress={() => navigation.navigate("EstateDetailsScreen")}>
+              <TouchableOpacity key={estate.id} onPress={() => navigation.navigate("EstateDetailsScreen", {estate})}>
                 <Estate
                   key={estate.id}
                   title={estate.title}

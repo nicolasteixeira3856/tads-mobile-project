@@ -10,7 +10,7 @@ const Estate = (props) => (
     <View style={styles.noteWrap}>
         <Image
             style={styles.image}
-            source={{ uri: 'https://7813-2804-1b3-6002-c794-c85a-c145-1d3d-45b6.ngrok.io/public/' + props.imgUrl}}
+            source={{ uri: 'https://76b5-2804-14c-87b9-b60d-94f-10e2-ad68-444a.ngrok.io/public/' + props.imgUrl}}
         />
         <View style={{ width: 6 }}/>
         <Text style={styles.text}>{props.title}{"\n"}{formatCurrency(props.price)}</Text>
