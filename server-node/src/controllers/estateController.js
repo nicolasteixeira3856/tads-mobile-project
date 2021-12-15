@@ -26,7 +26,7 @@ module.exports = {
                 const estate = await Estate.findAll({
                     order: [
                         ["price", "DESC"]
-                    ],
+                    ]
                 })
 
                 Object.entries(estate).forEach(([est,estVal]) => {

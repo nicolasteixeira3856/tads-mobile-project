@@ -78,7 +78,7 @@ module.exports = {
           {
             title: "Apartamento com 2 dormitórios e coberturas duplex de até 112m²",
             description: "Uma obra inspirada no estilo de vida de que valorizam a liberdade e deseja espaços funcionais e planejados na medida certa, apartamentos com 2 ou 3 dormitórios e coberturas duplex de até 112m² privativos. A menos de 15 minutos do Centro e vizinho ao Jardim Botânico, o Cristo Rei é o protagonista de uma das desenvolvidas regiões de Curitiba, é nesse bairro que está localizado do Terrasse Musique, em um terreno de esquina e com uma localização tranquila, envolto de ruas arborizadas.",
-            img_path: "9c1accdb531689444580ba18b1587b70.jpg",
+            img_path: "9d17000b99b0042cb9129d5354306e3b.jpg",
             lat: "-25.43297242009961",
             lng: "-49.2409349153413",
             price: 540000,
