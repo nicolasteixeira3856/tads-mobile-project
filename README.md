@@ -4,19 +4,27 @@
 ### Nícolas Teixeira Guerra Garcia - GRR20193920
 ### José Adilson de Paula Cardoso - GRR20193771
 
-## Inicializar o projeto
+## Inicializar a API do projeto
 - cd server-node
 - npm install
+- atualizar o .env do projeto para conectar-se ao seu banco de dados
 - npx sequelize db:create
 - npx sequelize db:migrate
 - npx sequelize db:seed:all 
 - npm start
-- run with ngrok: ngrok http 3333
-#### Em outro terminal na raiz do projeto:
+## Rodar a API do projeto para que o app possa se conectar
+#### A recomendação é utilizar ngrok (https://ngrok.com)
+- efetuar o download do ngrok e abri-lo
+- executar ngrok http 3333
+## Inicializar o app:
 - cd app-react-native
 - npm install
-- npm start
+- atualizar o valor da API_URL em app-react-native\src\core\constants.js para a URL HTTPS do ngrok
+- expo start -c
 
+## Contas de teste: 
+- e-mail: nicolasteixeira3856@outlook - senha: senha123
+- e-mail: chrono.jap@gmail.com - senha: senha123
 
 Enunciado:
 Especificação do Trabalho Prático
