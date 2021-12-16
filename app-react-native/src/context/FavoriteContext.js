@@ -20,7 +20,7 @@ function favoriteReducer(state, action) {
     case "messageFavoritesScreen":
       return {
         ...state,
-        message: action.payload,
+        messageFavoritesScreen: action.payload,
       };
     default:
       return { ...state };
@@ -55,7 +55,7 @@ const FavoriteProvider = ({children}) => {
       const response = await api.delete(`/favorites/deleteFavorite/${userId}/${estateId}`, {});
       dispatch({ type: "message", payload: response.data.msg });
     } catch (err) {
-      dispatch({type: "message", payload: "Não foi remover o imóvel dos favoritos!",});
+      dispatch({type: "message", payload: "Não foi possível remover o imóvel dos favoritos!",});
     }
   };
 
@@ -63,7 +63,7 @@ const FavoriteProvider = ({children}) => {
     try {
       dispatch({ type: "removeEstateOnUnfavorite", payload: estateId });
     } catch (err) {
-      dispatch({type: "messageFavoritesScreen", payload: "Não foi remover o imóvel dos favoritos!",});
+      dispatch({type: "messageFavoritesScreen", payload: "Não foi possível remover o imóvel dos favoritos!",});
     }
   };
 
@@ -73,11 +73,13 @@ const FavoriteProvider = ({children}) => {
         id,
       });
       dispatch({ type: "listAllFavoritedEstatesByUserId", payload: response.data.favorites });
+      dispatch({type: "messageFavoritesScreen", payload: "",});
     } catch (err) {
       dispatch({
         type: "messageFavoritesScreen",
         payload: "Nenhum imóvel foi favoritado! ",
       });
+      dispatch({ type: "listAllFavoritedEstatesByUserId", payload: [] })
     }
   };
 

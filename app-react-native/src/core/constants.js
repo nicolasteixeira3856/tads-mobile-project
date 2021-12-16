@@ -1,5 +1,5 @@
 const MyConstants = {
-    API_URL: "https://811e-2804-14c-87b9-b60d-cc61-b569-45d3-b6c7.ngrok.io"
+    API_URL: "https://9f69-2804-1b3-6002-c794-e9f8-2958-e86-f833.ngrok.io"
 }
 
 export default MyConstants;

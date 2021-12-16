@@ -54,6 +54,7 @@ const FavoritesScreen = ({ navigation }) => {
     return (
       <View style={{padding: 16 }}>
         <ScrollView>
+          <Text>{favoriteState.messageFavoritesScreen}</Text>
           <View>
             {favoriteState.favoritedEstates.map((favoritedEstate) => (
               <TouchableOpacity key={favoritedEstate.Estate.id} onPress={() => navigation.navigate("EstateDetailsScreen", { estateId: favoritedEstate.Estate.id })}>
