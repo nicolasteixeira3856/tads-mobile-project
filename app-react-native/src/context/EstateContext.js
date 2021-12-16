@@ -11,6 +11,11 @@ function estateReducer(state, action) {
         ...state,
         estates: action.payload
       };
+    case "findEstateById":
+      return {
+        ...state,
+        estate: action.payload
+      };
     case "setFavoriteEstatesList":
       return {
         ...state,
@@ -19,6 +24,11 @@ function estateReducer(state, action) {
         ) 
       };
     case "message":
+      return {
+        ...state,
+        message: action.payload,
+      };
+    case "messageFindById":
       return {
         ...state,
         message: action.payload,
@@ -32,7 +42,9 @@ const EstateProvider = ({children}) => {
 
   const [estateState, dispatch] = useReducer(estateReducer, {
     estates: [],
-    message: ""
+    estate: [],
+    message: "",
+    messageFindById: "",
   });
 
   const listAllEstates = async({id}) => {
@@ -46,6 +58,21 @@ const EstateProvider = ({children}) => {
       dispatch({
         type: "message",
         payload: "Não foi possível recuperar os imóveis!",
+      });
+    }
+  };
+
+  const findEstateById = async({estateId}) => {
+    try {
+      const response = await api.post('/estates/findStateById', {
+        id: estateId,
+      });
+      dispatch({ type: "findEstateById", payload: response.data.estate });
+    } catch (err) {
+      console.log(err);
+      dispatch({
+        type: "messageFindById",
+        payload: "Não foi possível recuperar o imóvel!",
       });
     }
   };
@@ -66,7 +93,8 @@ const EstateProvider = ({children}) => {
       value={{
         estateState,
         listAllEstates,
-        setFavoriteEstatesList
+        setFavoriteEstatesList,
+        findEstateById
       }}
     >
       {children}

@@ -1,6 +1,6 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { Text, Input, Button, Switch } from "react-native-elements";
-import { View, Image, ActivityIndicator } from "react-native";
+import { View, Image } from "react-native";
 import { AuthContext } from "../context/AuthContext";
 
 const LoginScreen = ({ navigation }) => {
@@ -34,7 +34,7 @@ const LoginScreen = ({ navigation }) => {
 
         <View style={{flexDirection: "row", flexWrap: "wrap", alignItems: "center"}}>
             <Text>Logar</Text>
-            <Switch value={switchValue} onValueChange={toggleSwitch} />
+            <Switch color='#59617d' value={switchValue} onValueChange={toggleSwitch} />
             <Text>Cadastrar</Text>
         </View>
 
@@ -43,6 +43,7 @@ const LoginScreen = ({ navigation }) => {
         <View style={{width: '100%'}}>
             <Button
                 title={ switchValue ? "Cadastrar" : "Entrar" }
+                buttonStyle={{backgroundColor: '#59617d'}}
                 onPress={() => {
                     switchValue ? signUp({ email, password }) : signIn({ email, password });
                 }}

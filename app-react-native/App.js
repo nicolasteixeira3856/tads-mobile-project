@@ -49,7 +49,7 @@ export default function App() {
                   component={CustomDrawer}
                   options={{ headerShown: false }}
                 />
-                <Stack.Screen name="EstateDetailsScreen" component={EstateDetailsScreen}/>
+                <Stack.Screen name="EstateDetailsScreen" component={EstateDetailsScreen} options={{title: "Details"}}/>
               </Stack.Navigator>
           </NavigationContainer>
         </EstateProvider>
@@ -57,12 +57,3 @@ export default function App() {
     </AuthProvider>
   );
 }
-
-/*const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});*/
