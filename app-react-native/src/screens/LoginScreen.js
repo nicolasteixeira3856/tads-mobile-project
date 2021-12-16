@@ -23,6 +23,7 @@ const LoginScreen = ({ navigation }) => {
             placeholder="Email"
             onChangeText={(value) => setEmail(value)}
             value={email}
+            autoCapitalize="none"
         />
 
         <Input
@@ -30,6 +31,7 @@ const LoginScreen = ({ navigation }) => {
             onChangeText={(value) => setPassword(value)}
             value={password}
             secureTextEntry={true}
+            autoCapitalize="none"
         />
 
         <View style={{flexDirection: "row", flexWrap: "wrap", alignItems: "center"}}>
